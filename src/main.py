@@ -1,8 +1,8 @@
 import os
 from typing import List
 
-from class_for_prod import Category, Product, load_data_from_json
-from private_product import Category, Product
+from src.category import Category, load_data_from_json
+from product import Product
 
 # -------------------------------------------------- homework 14.1 -----------------------------------------------------
 
@@ -22,7 +22,7 @@ def main() -> None:
     # Перебираем и выводим информацию о категориях и продуктах
     for category in categories:
         print(f"Категория: {category.name}, Описание: {category.description}")
-        for product in category.products:
+        for product in category.products:  # category.products теперь возвращает список объектов Product
             print(
                 f"  Продукт: {product.name}, Цена: {product.price}, Количество: {product.quantity}"
             )
@@ -88,7 +88,7 @@ if __name__ == "__main__":
     print(category1.products)
 
     product4 = Product('55" QLED 4K', "Фоновая подсветка", 123000.0, 7)
-    category1.add_product(product4)
+    category1.add_product(product4)  # Убедитесь, что product4 - это экземпляр Product
 
     print(category1.products)
     print(category1.product_count)
