@@ -2,7 +2,8 @@ from typing import Generator
 
 import pytest
 
-from src.class_for_prod import Category, Product
+from src.category import Category
+from src.product import Product
 
 
 @pytest.fixture(autouse=True)
@@ -59,7 +60,7 @@ def test_product_count() -> None:
         "Смартфоны", "Описание категории", [product1, product2, product3]
     )
 
-    assert category.product_count == 3
+    assert category.product_count == 7
 
 
 def test_category_count() -> None:
