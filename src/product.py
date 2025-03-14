@@ -20,10 +20,10 @@ class Product:
         else:
             print("Цена не должна быть нулевая или отрицательная.")
 
-    @staticmethod
-    def new_product(data: dict) -> 'Product':
+    @classmethod
+    def new_product(cls, data: dict) -> 'Product':
         """Создает новый продукт из переданного словаря данных."""
-        return Product(
+        return cls(
             name=data["name"],
             description=data["description"],
             price=data["price"],

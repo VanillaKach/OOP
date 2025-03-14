@@ -88,6 +88,7 @@ if __name__ == "__main__":
     print(category1.products)
 
     product4 = Product('55" QLED 4K', "Фоновая подсветка", 123000.0, 7)
+    print(f"Тип product4: {type(product4)}")  # Отладочное сообщение
     category1.add_product(product4)  # Убедитесь, что product4 - это экземпляр Product
 
     print(category1.products)
