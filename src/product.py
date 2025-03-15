@@ -1,5 +1,3 @@
-from typing import List
-
 class Product:
     def __init__(self, name: str, description: str, price: float, quantity: int):
         self.name = name
@@ -21,13 +19,13 @@ class Product:
             print("Цена не должна быть нулевая или отрицательная.")
 
     @classmethod
-    def new_product(cls, data: dict) -> 'Product':
+    def new_product(cls, data: dict) -> "Product":
         """Создает новый продукт из переданного словаря данных."""
         return cls(
             name=data["name"],
             description=data["description"],
             price=data["price"],
-            quantity=data["quantity"]
+            quantity=data["quantity"],
         )
 
     def __str__(self) -> str:
