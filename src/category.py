@@ -1,12 +1,16 @@
 import json
 from typing import List, Optional
+
 from .product import Product  # Правильный относительный импорт
+
 
 class Category:
     category_count: int = 0  # Счетчик категорий
-    product_count: int = 0    # Счетчик продуктов
+    product_count: int = 0  # Счетчик продуктов
 
-    def __init__(self, name: str, description: str, products: Optional[List[Product]] = None) -> None:
+    def __init__(
+        self, name: str, description: str, products: Optional[List[Product]] = None
+    ) -> None:
         self.name = name
         self.description = description
         self.__products: List[Product] = products if products is not None else []
@@ -20,7 +24,9 @@ class Category:
             self.__products.append(product)
             Category.product_count += 1
         else:
-            raise TypeError("Можно добавлять только экземпляры класса Product или его наследников.")
+            raise TypeError(
+                "Можно добавлять только экземпляры класса Product или его наследников."
+            )
 
     @property
     def products(self) -> List[Product]:  # Изменено на возвращение списка

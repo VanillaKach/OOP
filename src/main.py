@@ -2,7 +2,7 @@ import os
 from typing import List
 
 from src.category import Category, load_data_from_json
-from product import Product
+from src.product import Product
 
 # -------------------------------------------------- homework 14.1 -----------------------------------------------------
 
@@ -22,7 +22,11 @@ def main() -> None:
     # Перебираем и выводим информацию о категориях и продуктах
     for category in categories:
         print(f"Категория: {category.name}, Описание: {category.description}")
-        for product in category.products:  # category.products теперь возвращает список объектов Product
+        for (
+            product
+        ) in (
+            category.products
+        ):  # category.products теперь возвращает список объектов Product
             print(
                 f"  Продукт: {product.name}, Цена: {product.price}, Количество: {product.quantity}"
             )

@@ -1,6 +1,7 @@
-import pytest
 from unittest.mock import patch
+
 from src.product import Product
+
 
 # Тесты для класса Product
 def test_product_creation() -> None:
@@ -20,7 +21,7 @@ def test_product_price_update() -> None:
 def test_product_price_update_lower() -> None:
     product = Product("Test Product", "This is a test product.", 100.0, 10)
 
-    with patch('builtins.input', return_value='y'):
+    with patch("builtins.input", return_value="y"):
         product.price = 80.0  # Понижение цены
     assert product.price == 80.0
 
@@ -28,6 +29,6 @@ def test_product_price_update_lower() -> None:
 def test_product_price_update_lower_cancel() -> None:
     product = Product("Test Product", "This is a test product.", 100.0, 10)
 
-    with patch('builtins.input', return_value='n'):
+    with patch("builtins.input", return_value="n"):
         product.price = 80.0  # Понижение цены
     assert product.price == 80.0  # Цена не должна измениться

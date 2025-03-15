@@ -1,6 +1,6 @@
-import pytest
 from src.category import Category
 from src.product import Product
+
 
 # Тесты для класса Category
 def test_category_creation() -> None:
