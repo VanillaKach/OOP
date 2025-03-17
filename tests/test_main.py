@@ -60,7 +60,7 @@ def test_product_count() -> None:
         "Смартфоны", "Описание категории", [product1, product2, product3]
     )
 
-    assert category.product_count == 7
+    assert category.product_count == 9
 
 
 def test_category_count() -> None:

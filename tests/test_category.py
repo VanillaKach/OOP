@@ -36,3 +36,9 @@ def test_category_count() -> None:
     category1 = Category("Category 1", "First category.")
     category2 = Category("Category 2", "Second category.")
     assert Category.category_count == 5  # Проверка общего количества категорий
+
+def test_category_str() -> None:
+    product1 = Product("Product 1", "Description 1", 100.0, 10)
+    product2 = Product("Product 2", "Description 2", 200.0, 5)
+    category = Category("Test Category", "This is a test category.", [product1, product2])
+    assert str(category) == "Test Category, количество продуктов: 15 шт."
