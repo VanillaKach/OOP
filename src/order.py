@@ -1,6 +1,7 @@
 from src.base_entity import BaseEntity
 from src.product import Product
 
+
 class Order(BaseEntity):
     def __init__(self, product: Product, quantity: int):
         super().__init__(f"Заказ на {product.name}")

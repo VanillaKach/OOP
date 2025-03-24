@@ -1,9 +1,12 @@
 from src.base_product import BaseProduct
 from src.log_mixin import LogCreationMixin
 
+
 class Product(LogCreationMixin, BaseProduct):
     def __init__(self, name: str, description: str, price: float, quantity: int):
-        super().__init__(name=name, description=description, price=price, quantity=quantity)
+        super().__init__(
+            name=name, description=description, price=price, quantity=quantity
+        )
         self.__price = price  # Приватный атрибут для цены
 
     @property
