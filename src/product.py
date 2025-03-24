@@ -1,9 +1,13 @@
-class Product:
+from src.base_product import BaseProduct
+from src.log_mixin import LogCreationMixin
+
+
+class Product(LogCreationMixin, BaseProduct):
     def __init__(self, name: str, description: str, price: float, quantity: int):
-        self.name = name
-        self.description = description
-        self.price = price
-        self.quantity = quantity
+        super().__init__(
+            name=name, description=description, price=price, quantity=quantity
+        )
+        self.__price = price  # Приватный атрибут для цены
 
     @property
     def price(self) -> float:
@@ -31,4 +35,4 @@ class Product:
     def __add__(self, other: "Product") -> float:
         if isinstance(other, Product):
             return self.price * self.quantity + other.price * other.quantity
-        return NotImplemented
+        raise TypeError("Нельзя складывать товары разных классов")
