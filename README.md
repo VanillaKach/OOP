@@ -41,22 +41,31 @@ if __name__ == "__main__":
 pytest
 ```
 ---------- coverage: platform linux, python 3.12.3-final-0 -----------
-Name                     Stmts   Miss  Cover
---------------------------------------------
-src/__init__.py              0      0   100%
-src/category.py             28      2    93%
-src/product.py              23      3    87%
-src/utils.py                13      0   100%
-tests/__init__.py            0      0   100%
-tests/test_category.py      31      0   100%
-tests/test_main.py          37      1    97%
-tests/test_product.py       29      0   100%
-tests/test_utils.py         38      0   100%
---------------------------------------------
-TOTAL                      199      6    97%
+Name                         Stmts   Miss  Cover
+------------------------------------------------
+src/__init__.py                  0      0   100%
+src/base_entity.py               8      2    75%
+src/base_product.py             14      2    86%
+src/category.py                 28      2    93%
+src/lawn_grass.py               11      1    91%
+src/log_mixin.py                 4      0   100%
+src/product.py                  23      3    87%
+src/smartphone.py               12      1    92%
+src/utils.py                    13      0   100%
+tests/__init__.py                0      0   100%
+tests/test_base_product.py      10      0   100%
+tests/test_category.py          31      0   100%
+tests/test_lawn_grass.py         9      0   100%
+tests/test_log_mixin.py          9      0   100%
+tests/test_main.py              37      1    97%
+tests/test_product.py           29      0   100%
+tests/test_smartphone.py        10      0   100%
+tests/test_utils.py             38      0   100%
+------------------------------------------------
+TOTAL                          286     12    96%
 
 
-======================== 16 passed in 0.08s ========================
+======================== 23 passed in 0.10s ========================
 ```
 
 Лицензия:

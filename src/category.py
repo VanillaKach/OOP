@@ -2,8 +2,9 @@ from typing import List, Optional
 
 from .product import Product  # Правильный относительный импорт
 
+from src.base_entity import BaseEntity
 
-class Category:
+class Category(BaseEntity):
     category_count: int = 0  # Счетчик категорий
     product_count: int = 0  # Счетчик продуктов
 
