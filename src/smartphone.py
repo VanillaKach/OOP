@@ -20,6 +20,6 @@ class Smartphone(Product):
         self.color = color
 
     def __add__(self, other):
-        if isinstance(other, Smartphone):
+        if type(other) is type(self):  # Используем type()
             return self.price * self.quantity + other.price * other.quantity
         raise TypeError("Нельзя складывать товары разных классов")
