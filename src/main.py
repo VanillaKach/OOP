@@ -25,11 +25,7 @@ def main() -> None:
     # Перебираем и выводим информацию о категориях и продуктах
     for category in categories:
         print(f"Категория: {category.name}, Описание: {category.description}")
-        for (
-            product
-        ) in (
-            category.products
-        ):  # category.products теперь возвращает список объектов Product
+        for product in category.products:
             print(
                 f"  Продукт: {product.name}, Цена: {product.price}, Количество: {product.quantity}"
             )
@@ -115,14 +111,21 @@ if __name__ == "__main__":
     print(new_product.price)
     print(new_product.quantity)
 
-    new_product.price = 800  # Понижение цены
-    print(new_product.price)
+    print("\nТестирование изменения цены:")
+    new_product.price = 800  # Корректное изменение цены
+    print(f"Цена изменена на: {new_product.price}")
 
-    new_product.price = -100  # Попытка установить отрицательную цену
-    print(new_product.price)
+    try:
+        new_product.price = -100  # Попытка установить отрицательную цену
+    except ValueError as e:
+        print(f"Ошибка при установке отрицательной цены: {e}")
+        print(f"Текущая цена осталась: {new_product.price}")
 
-    new_product.price = 0  # Попытка установить нулевую цену
-    print(new_product.price)
+    try:
+        new_product.price = 0  # Попытка установить нулевую цену
+    except ValueError as e:
+        print(f"Ошибка при установке нулевой цены: {e}")
+        print(f"Текущая цена осталась: {new_product.price}")
 
 
 # -------------------------------------------------- homework 15.1 -----------------------------------------------------

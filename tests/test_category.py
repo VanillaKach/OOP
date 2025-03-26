@@ -1,3 +1,5 @@
+import pytest
+
 from src.category import Category
 from src.product import Product
 
@@ -27,7 +29,7 @@ def test_add_multiple_products() -> None:
     category.add_product(product1)
     category.add_product(product2)
 
-    assert category.product_count == 3
+    assert category.product_count == 2
     assert category.get_products()[0].name == "Product 1"
     assert category.get_products()[1].name == "Product 2"
 
@@ -42,3 +44,23 @@ def test_category_str() -> None:
     product2 = Product("Product 2", "Description 2", 200.0, 5)
     category = Category("Test Category", "This is a test category.", [product1, product2])
     assert str(category) == "Test Category, количество продуктов: 15 шт."
+
+
+@pytest.fixture(autouse=True)
+def reset_counts():
+    Category.category_count = 0
+    Category.product_count = 0
+    yield
+    Category.category_count = 0
+    Category.product_count = 0
+
+def test_category_count():
+    Category("Cat1", "Desc1", [])
+    Category("Cat2", "Desc2", [])
+    assert Category.category_count == 2
+
+def test_product_count():
+    p1 = Product("P1", "Desc", 100, 5)
+    p2 = Product("P2", "Desc", 200, 3)
+    Category("Cat", "Desc", [p1, p2])
+    assert Category.product_count == 2

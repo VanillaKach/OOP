@@ -11,3 +11,8 @@ def test_lawn_grass_addition():
     grass1 = LawnGrass("Grass1", "Desc", 300.0, 5, "Russia", "7 days", "Green")
     grass2 = LawnGrass("Grass2", "Desc", 400.0, 3, "USA", "10 days", "Dark Green")
     assert grass1 + grass2 == (300.0 * 5) + (400.0 * 3)  # 1500 + 1200 = 2700
+
+def test_lawn_grass_addition_same_type():
+    grass1 = LawnGrass("G1", "Desc", 300, 5, "RU", "7d", "Green")
+    grass2 = LawnGrass("G2", "Desc", 400, 3, "US", "10d", "Blue")
+    assert grass1 + grass2 == 300*5 + 400*3

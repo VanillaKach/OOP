@@ -12,4 +12,19 @@ def test_smartphone_addition():
     phone1 = Smartphone("Phone1", "Desc", 1000.0, 2, 90.0, "X", 128, "Black")
     phone2 = Smartphone("Phone2", "Desc", 2000.0, 3, 95.0, "Y", 256, "White")
     assert phone1 + phone2 == (1000.0 * 2) + (2000.0 * 3)  # 2000 + 6000 = 8000
-    
+
+
+def test_smartphone_new_product():
+    data = {
+        'name': 'iPhone',
+        'description': '...',
+        'price': 100000,
+        'quantity': 2,
+        'efficiency': 95.5,
+        'model': '15 Pro',
+        'memory': 256,
+        'color': 'black'
+    }
+    phone = Smartphone.new_product(data)
+    assert phone.memory == 256
+    assert phone.color == 'black'
