@@ -1,8 +1,9 @@
 from typing import List, Optional
 
+from src.base_entity import BaseEntity
+
 from .product import Product  # Правильный относительный импорт
 
-from src.base_entity import BaseEntity
 
 class Category(BaseEntity):
     category_count: int = 0  # Счетчик категорий
@@ -20,16 +21,13 @@ class Category(BaseEntity):
     def add_product(self, product: Product) -> None:
         """Добавляет продукт в категорию и увеличивает счетчик продуктов."""
         print(f"Проверка типа продукта: {type(product)}")  # Отладочное сообщение
-        if isinstance(product, Product):
-            self.__products.append(product)
-            Category.product_count += 1
-        else:
-            raise TypeError(
-                "Можно добавлять только экземпляры класса Product или его наследников."
-            )
+        if not isinstance(product, Product):
+            raise TypeError("Можно добавлять только продукты")
+        self.__products.append(product)
+        Category.product_count = len(self.__products)
 
     @property
-    def products(self) -> List[Product]:  # Изменено на возвращение списка
+    def products(self) -> List[Product]:
         """Возвращает список продуктов."""
         return self.__products
 
@@ -44,4 +42,3 @@ class Category(BaseEntity):
     def __str__(self) -> str:
         total_quantity = sum(product.quantity for product in self.__products)
         return f"{self.name}, количество продуктов: {total_quantity} шт."
-

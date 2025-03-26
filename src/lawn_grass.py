@@ -18,6 +18,4 @@ class LawnGrass(Product):
         self.color = color
 
     def __add__(self, other):
-        if isinstance(other, LawnGrass):
-            return self.price * self.quantity + other.price * other.quantity
-        raise TypeError("Нельзя складывать товары разных классов")
+        return super().__add__(other)  # Используем родительскую реализацию
