@@ -49,18 +49,13 @@ def test_category_initialization(sample_category: Category) -> None:
 
 
 def test_product_count() -> None:
-    """Тестирует подсчет количества продуктов в категории."""
-    product1 = Product(
-        "Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5
-    )
-    product2 = Product("Iphone 15", "512GB, Gray space", 210000.0, 8)
-    product3 = Product("Xiaomi Redmi Note 11", "1024GB, Синий", 31000.0, 14)
+    Category.product_count = 0  # Сброс счётчика
+    product1 = Product("P1", "Desc", 180000.0, 5)
+    product2 = Product("P2", "Desc", 210000.0, 8)
+    product3 = Product("P3", "Desc", 31000.0, 14)
 
-    category = Category(
-        "Смартфоны", "Описание категории", [product1, product2, product3]
-    )
-
-    assert category.product_count == 7
+    category = Category("Смартфоны", "Описание", [product1, product2, product3])
+    assert category.product_count == 3  # Количество уникальных продуктов
 
 
 def test_category_count() -> None:
