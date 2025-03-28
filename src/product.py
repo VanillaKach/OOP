@@ -27,34 +27,20 @@ class Product(LogCreationMixin, BaseProduct):
         """
         Создает продукт из словаря. Для дочерних классов автоматически передает все дополнительные поля.
         """
-        # Базовые поля, обязательные для всех продуктов
         required_fields = ["name", "description", "price", "quantity"]
         for field in required_fields:
             if field not in data:
                 raise ValueError(f"Отсутствует обязательное поле: {field}")
 
-        # Для базового класса Product
-        if cls == Product:
-            return cls(
-                name=data["name"],
-                description=data["description"],
-                price=data["price"],
-                quantity=data["quantity"],
-            )
+        if data["price"] <= 0:
+            raise ValueError("Цена должна быть положительной")
 
-        # Для дочерних классов передаем ВСЕ поля из data
         return cls(**data)
 
     def __str__(self) -> str:
         return f"{self.name}, {self.price} руб. Остаток: {self.quantity} шт."
 
-    def __add__(self, other: "BaseProduct") -> "Product":
-        if not isinstance(other, Product):
+    def __add__(self, other: "Product") -> float:
+        if type(other) is not type(self):  # Строгая проверка на идентичность классов
             raise TypeError("Нельзя складывать товары разных классов")
-        total_value = self.price * self.quantity + other.price * other.quantity
-        return Product(
-            name=f"Сумма {self.name} и {other.name}",
-            description="",
-            price=total_value / (self.quantity + other.quantity),
-            quantity=self.quantity + other.quantity,
-        )
+        return self.price * self.quantity + other.price * other.quantity

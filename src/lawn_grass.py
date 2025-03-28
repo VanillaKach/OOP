@@ -18,4 +18,6 @@ class LawnGrass(Product):
         self.color = color
 
     def __add__(self, other):
-        return super().__add__(other)  # Используем родительскую реализацию
+        if type(other) is not type(self):  # Строгая проверка на идентичность классов
+            raise TypeError("Нельзя складывать товары разных классов")
+        return self.price * self.quantity + other.price * other.quantity # Используем родительскую реализацию
