@@ -5,6 +5,7 @@ from unittest.mock import patch
 from src.product import Product
 
 from src.lawn_grass import LawnGrass
+from src.exceptions import ZeroQuantityError
 
 
 # Тесты для класса Product
@@ -73,3 +74,15 @@ def test_product_addition_different_classes():
     grass = LawnGrass("Газон", "Зеленый", 500, 10, "Россия", "7 дней", "зеленый")
     with pytest.raises(TypeError, match="Нельзя складывать товары разных классов"):
         product + grass
+
+def test_zero_quantity_product():
+    with pytest.raises(ZeroQuantityError):
+        Product("Invalid", "Desc", 100, 0)
+
+def test_zero_quantity_error_message():
+    try:
+        Product("Invalid", "Desc", 100, 0)
+    except ZeroQuantityError as e:
+        assert str(e) == "Товар с нулевым количеством не может быть добавлен"
+    else:
+        pytest.fail("ZeroQuantityError not raised")
