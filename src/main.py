@@ -6,6 +6,7 @@ from src.lawn_grass import LawnGrass
 from src.product import Product
 from src.smartphone import Smartphone
 from src.utils import load_data_from_json
+from src.exceptions import ZeroQuantityError
 
 # -------------------------------------------------- homework 14.1 -----------------------------------------------------
 
@@ -332,3 +333,26 @@ if __name__ == "__main__":
 
     print(Category.category_count)
     print(Category.product_count)
+
+# -------------------------------------------------- homework 17.1 -----------------------------------------------------
+
+if __name__ == '__main__':
+    print("\nТестирование обработки нулевого количества:")
+    try:
+        product_invalid = Product("Бракованный товар", "Неверное количество", 1000.0, 0)
+    except ZeroQuantityError as e:
+        print(f"Ожидаемая ошибка: {e}")
+    else:
+        print("Ошибка: исключение не было вызвано")
+
+    print("\nСоздание корректных товаров:")
+    product1 = Product("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5)
+    product2 = Product("Iphone 15", "512GB, Gray space", 210000.0, 8)
+    product3 = Product("Xiaomi Redmi Note 11", "1024GB, Синий", 31000.0, 14)
+
+    print("\nТестирование средней цены:")
+    category1 = Category("Смартфоны", "Категория смартфонов", [product1, product2, product3])
+    print(f"Средняя цена в категории '{category1.name}': {category1.middle_price():.2f} руб.")
+
+    category_empty = Category("Пустая категория", "Категория без продуктов", [])
+    print(f"Средняя цена в пустой категории: {category_empty.middle_price():.2f} руб.")

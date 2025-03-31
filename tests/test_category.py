@@ -64,3 +64,28 @@ def test_product_count():
     p2 = Product("P2", "Desc", 200, 3)
     Category("Cat", "Desc", [p1, p2])
     assert Category.product_count == 2
+
+def test_middle_price_with_products():
+    product1 = Product("Product 1", "Description 1", 100.0, 10)
+    product2 = Product("Product 2", "Description 2", 200.0, 5)
+    category = Category("Test Category", "Description", [product1, product2])
+    assert category.middle_price() == 150.0
+
+def test_middle_price_empty_category():
+    category = Category("Empty Category", "Description", [])
+    assert category.middle_price() == 0.0
+
+def test_middle_price():
+    # Тест с товарами
+    p1 = Product("P1", "Desc", 100, 5)
+    p2 = Product("P2", "Desc", 200, 3)
+    category = Category("Test", "Desc", [p1, p2])
+    assert category.middle_price() == 150.0
+
+    # Тест с одним товаром
+    category = Category("Test", "Desc", [p1])
+    assert category.middle_price() == 100.0
+
+    # Тест пустой категории
+    category = Category("Empty", "Desc", [])
+    assert category.middle_price() == 0.0
