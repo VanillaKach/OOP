@@ -66,30 +66,24 @@ if __name__ == "__main__":
 
 pytest
 ```
----------- coverage: platform linux, python 3.12.3-final-0 -----------
-Name                         Stmts   Miss  Cover
-------------------------------------------------
-src/__init__.py                  0      0   100%
-src/base_entity.py               8      2    75%
-src/base_product.py             11      2    82%
-src/category.py                 28      2    93%
-src/lawn_grass.py                9      0   100%
-src/log_mixin.py                 6      0   100%
-src/product.py                  32      3    91%
-src/smartphone.py               12      1    92%
-src/utils.py                    13      0   100%
-tests/__init__.py                0      0   100%
-tests/test_base_product.py      10      0   100%
-tests/test_category.py          48      3    94%
-tests/test_inheritance.py       13      4    69%
-tests/test_lawn_grass.py        13      0   100%
-tests/test_log_mixin.py          9      0   100%
-tests/test_main.py              38      1    97%
-tests/test_product.py           47      4    91%
-tests/test_smartphone.py        15      0   100%
-tests/test_utils.py             38      0   100%
-------------------------------------------------
-TOTAL                          350     22    94%
+========================= test session starts ==========================
+platform linux -- Python 3.12.3, pytest-8.3.5, pluggy-1.5.0
+rootdir: /home/ubuvan/Py/OOP
+configfile: pyproject.toml
+plugins: cov-6.0.0, anyio-4.8.0
+collected 34 items                                                     
+
+tests/test_base_product.py ..                                    [  5%]
+tests/test_category.py .........                                 [ 32%]
+tests/test_inheritance.py .                                      [ 35%]
+tests/test_lawn_grass.py ...                                     [ 44%]
+tests/test_log_mixin.py .                                        [ 47%]
+tests/test_main.py ....                                          [ 58%]
+tests/test_product.py ..........                                 [ 88%]
+tests/test_smartphone.py ...                                     [ 97%]
+tests/test_utils.py .                                            [100%]
+
+========================== 34 passed in 0.06s ==========================
 
 ```
 

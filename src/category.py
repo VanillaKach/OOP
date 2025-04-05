@@ -42,3 +42,10 @@ class Category(BaseEntity):
     def __str__(self) -> str:
         total_quantity = sum(product.quantity for product in self.__products)
         return f"{self.name}, количество продуктов: {total_quantity} шт."
+
+    def middle_price(self) -> float:
+        """Рассчитывает среднюю цену товаров в категории."""
+        if not self.__products:
+            return 0.0
+        total = sum(product.price for product in self.__products)
+        return total / len(self.__products)
